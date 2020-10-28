@@ -14,7 +14,10 @@ function setup() {
   cnv.position(x, y);
   angleMode(DEGREES);
 
+
   createButton("start").mousePressed(startSketch);
+
+
 
 
 }
@@ -31,9 +34,9 @@ function draw() {
 
   if(sketchStarted) {
 
-    micLevel = mic.getLevel()
+    micLevel = mic.getLevel(0.9);
 
-    micInput = map(mic.getLevel(), 0, .01, 0, 2.5);
+    micInput = map(micLevel, 0, .01, 0, 2.5);
 
     background(225);
 
