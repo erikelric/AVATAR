@@ -9,9 +9,11 @@ function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
 
-  createButton("start");
+  // createButton("start");
   mic = new p5.AudioIn()
   mic.start();
+
+
 
 }
 
