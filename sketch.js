@@ -9,6 +9,7 @@ function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
 
+  createButton("start");
   mic = new p5.AudioIn()
   mic.start();
 
@@ -17,13 +18,13 @@ function setup() {
 function draw() {
 
   micLevel = mic.getLevel()
-  
+
   micInput = map(mic.getLevel(), 0, .01, 0, 2.5);
 
   background(220);
 
   drawBasicShape();
-  drawMask(micInput); // parameter = vertical movement 
+  drawMask(micInput); // parameter = vertical movement
   drawEyebrow1(angleEyebrow1);
   drawEyebrow2(angleEyebrow2);
   drawEyes();
@@ -31,7 +32,7 @@ function draw() {
 
 }
 
-function mousePressed() { //tap between eyebrows to change expression 
+function mousePressed() { //tap between eyebrows to change expression
 
 
   if (mouseX > width * 0.3 && mouseX < width * 0.7 && mouseY > height * 0.1 && mouseY < height * 0.3) {
