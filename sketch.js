@@ -4,33 +4,49 @@ let micLevel;
 let angleEyebrow1 = 10;
 let angleEyebrow2 = -10;
 let bamYes = false;
+let sketchStarted = false;
 
 function setup() {
-  createCanvas(400, 400);
+
+  var cnv = createCanvas(600, 600);
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
   angleMode(DEGREES);
 
-  // createButton("start");
-  mic = new p5.AudioIn()
-  mic.start();
-
+  createButton("start").mousePressed(startSketch);
 
 
 }
 
+function startSketch() {
+
+  mic = new p5.AudioIn()
+  mic.start();
+
+  sketchStarted = true;
+}
+
 function draw() {
 
-  micLevel = mic.getLevel()
+  if(sketchStarted) {
 
-  micInput = map(mic.getLevel(), 0, .01, 0, 2.5);
+    micLevel = mic.getLevel()
 
-  background(220);
+    micInput = map(mic.getLevel(), 0, .01, 0, 2.5);
 
-  drawBasicShape();
-  drawMask(micInput); // parameter = vertical movement
-  drawEyebrow1(angleEyebrow1);
-  drawEyebrow2(angleEyebrow2);
-  drawEyes();
-  drawPupils();
+    background(225);
+
+    drawBasicShape();
+    drawMask(micInput); // parameter = vertical movement
+    drawEyebrow1(angleEyebrow1);
+    drawEyebrow2(angleEyebrow2);
+    drawEyes();
+    drawPupils();
+
+  }
+
+
 
 }
 
